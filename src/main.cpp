@@ -1,29 +1,49 @@
 #include <Arduino.h>
-#define LED_1 12
-#define LED_2 11
-#define LED_3 10
 
+#define LED_GREEN 11
+#define LED_RED 10
+#define LED_BLUE 9
+#define BRIGHTNESS 75
 #define MY_INTRO "This app is created in the memory of Travis Barnes"
 int animationSpeed = 0;
 
 void setup() {
-  pinMode(LED_1, OUTPUT);
-  pinMode(LED_2, OUTPUT);
-  pinMode(LED_3, OUTPUT);
+  pinMode(LED_BLUE, OUTPUT);
+  pinMode(LED_GREEN, OUTPUT);
+  pinMode(LED_RED, OUTPUT);
 }
 
 void loop() {
-  animationSpeed = 90;
-  digitalWrite(LED_1, HIGH);
-  delay(animationSpeed);
-  digitalWrite(LED_1, LOW);
-  delay(animationSpeed);
-  digitalWrite(LED_2, HIGH);
-  delay(animationSpeed);
-  digitalWrite(LED_2, LOW);
-  delay(animationSpeed);
-  digitalWrite(LED_3, HIGH);
-  delay(animationSpeed);
-  digitalWrite(LED_3, LOW);
-  delay(animationSpeed);
+  animationSpeed = 100;
+  
+  for(int i = 0; i <= BRIGHTNESS; i++) {
+    analogWrite(LED_RED, i);
+    delay(animationSpeed);
+  }
+  
+  for(int i = BRIGHTNESS; i >= 0; i--) {
+    analogWrite(LED_RED, i);
+    delay(animationSpeed);
+  }
+  
+  for(int i = 0; i <= BRIGHTNESS; i++) {
+    analogWrite(LED_GREEN, i);
+    delay(animationSpeed);
+  }
+  
+  for(int i = BRIGHTNESS; i >= 0; i--) {
+    analogWrite(LED_GREEN, i);
+    delay(animationSpeed);
+  }
+  
+  for(int i = 0; i <= BRIGHTNESS; i++) {
+    analogWrite(LED_BLUE, i);
+    delay(animationSpeed);
+  }
+  
+  for(int i = BRIGHTNESS; i >= 0; i--) {
+    analogWrite(LED_BLUE, i);
+    delay(animationSpeed);
+  }
 }
+  
